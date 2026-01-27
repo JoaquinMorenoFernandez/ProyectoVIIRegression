@@ -5,6 +5,43 @@ import pickle
 import re
 import os
 import plotly.express as px
+import csv
+from datetime import datetime
+
+
+def save_production_data(user_inputs, prediction, real_price=None, feedback_score=None):
+    pass 
+# --------------------------------------
+
+st.set_page_config(
+    page_title="Valuador de Autos - Proyecto VII",
+    # ...
+)
+
+
+def save_production_data(user_inputs, prediction, real_price=None, feedback_score=None):
+    """
+    Guarda los datos de entrada, la predicción y el feedback en un CSV.
+    Esto cumple con: Pipeline de ingestión y Sistema de Feedback.
+    """
+    file_name = 'production_logs.csv'
+    
+    # Preparamos la fila de datos
+    data_row = user_inputs.copy()
+    data_row['prediction'] = prediction
+    data_row['timestamp'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Feedback (si el usuario lo da)
+    data_row['real_price_feedback'] = real_price 
+    data_row['user_rating'] = feedback_score
+    
+    # Comprobar si el archivo existe para escribir cabeceras
+    file_exists = os.path.isfile(file_name)
+    
+    with open(file_name, mode='a', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=data_row.keys())
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(data_row)
 
 # Configuración de la página
 st.set_page_config(
@@ -221,9 +258,32 @@ def main():
             try:
                 X_pred = prepare_input_data(user_data, df, artifacts)
                 predicted_price = artifacts['model'].predict(X_pred)[0]
-                
+                # ... (código existente donde muestras la predicción) ...
                 st.success(f"### ${predicted_price:,.2f}")
+                
+                # --- SECCIÓN DE FEEDBACK Y RECOGIDA DE DATOS ---
+                st.markdown("---")
+                st.write("### 📝 Ayúdanos a mejorar")
+                
+                with st.expander("¿Vendiste este coche o conoces su precio real?"):
+                    col_feed1, col_feed2 = st.columns(2)
+                    with col_feed1:
+                        real_price_input = st.number_input("Precio real de venta ($)", min_value=0.0)
+                    with col_feed2:
+                        rating = st.slider("¿Qué tan precisa fue la predicción? (1-5)", 1, 5, 3)
+                    
+                    if st.button("Enviar Feedback"):
+                        # Guardamos TODO: los datos del coche (inputs), la predicción y el feedback
+                        # user_data es el diccionario que creaste arriba con brand, model, etc.
+                        save_production_data(user_data, predicted_price, real_price_input, rating)
+                        st.toast("¡Gracias! Tus datos ayudarán a reentrenar el modelo.")
+                        
+                # Guardar automáticamente la consulta (sin feedback) si es la primera vez
+                if 'log_saved' not in st.session_state:
+                    save_production_data(user_data, predicted_price)
+                    st.session_state.log_saved = True
                 st.caption(f"Valor estimado para un {selected_brand} {selected_model} del {selected_year}.")
+                
             except Exception as e:
                 st.error(f"Error en la predicción: {e}")
 
