@@ -1,4 +1,15 @@
+<<<<<<< Updated upstream:production_logs.csv
 brand,model,model_year,milage,fuel_type,engine,transmission,ext_col,int_col,accident,clean_title,prediction,timestamp,real_price_feedback,user_rating
 Land,Rover Range Rover 5.0L V8 Supercharged,2019,24683,Gasoline,518.0HP 5.0L 8 Cylinder Engine Gasoline Fuel,8-Speed A/T,Black,Black,At least 1 accident or damage reported,Yes,44604.1554484732,2026-01-27 09:24:10,,
 Maserati,Ghibli S Q4 GranSport,2018,80500,Gasoline,424.0HP 3.0L V6 Cylinder Engine Gasoline Fuel,8-Speed A/T,Black,Black,At least 1 accident or damage reported,Yes,43417.06687006064,2026-01-27 09:35:48,,
 Tesla,Model 3 Standard Range,2020,23097,Unknown,271.0HP Electric Motor Electric Fuel System,A/T,Black,Black,At least 1 accident or damage reported,Yes,43833.339701726465,2026-01-27 09:37:49,,
+=======
+brand,model,model_year,milage,fuel_type,engine,transmission,ext_col,int_col,accident,clean_title,prediction,timestamp,real_price_feedback,user_rating
+Land,Rover Range Rover 5.0L V8 Supercharged,2019,24683,Gasoline,518.0HP 5.0L 8 Cylinder Engine Gasoline Fuel,8-Speed A/T,Black,Black,At least 1 accident or damage reported,Yes,44604.1554484732,2026-01-27 09:24:10,,
+Maserati,Ghibli S Q4 GranSport,2018,80500,Gasoline,424.0HP 3.0L V6 Cylinder Engine Gasoline Fuel,8-Speed A/T,Black,Black,At least 1 accident or damage reported,Yes,43417.06687006064,2026-01-27 09:35:48,,
+Tesla,Model 3 Standard Range,2020,23097,Unknown,271.0HP Electric Motor Electric Fuel System,A/T,Black,Black,At least 1 accident or damage reported,Yes,43833.339701726465,2026-01-27 09:37:49,,
+Acura,ILX 2.0L w/Premium Package,2015,75000,Gasoline,150.0HP 2.0L 4 Cylinder Engine Gasoline Fuel,5-Speed A/T,Gold,Beige,At least 1 accident or damage reported,Yes,41003.861430782155,2026-01-28 13:05:32,,
+Acura,ILX 2.0L w/Premium Package,2015,75000,Gasoline,150.0HP 2.0L 4 Cylinder Engine Gasoline Fuel,5-Speed A/T,Gold,Beige,At least 1 accident or damage reported,Yes,41003.861430782155,2026-01-29 12:01:56,,
+Acura,ILX 2.0L w/Premium Package,2015,75000,Gasoline,150.0HP 2.0L 4 Cylinder Engine Gasoline Fuel,5-Speed A/T,Gold,Beige,At least 1 accident or damage reported,Yes,41003.861430782155,2026-01-29 12:07:13,,
+Audi,A3 2.0 TDI Premium Plus,2015,83000,Diesel,150.0HP 2.0L 4 Cylinder Engine Diesel Fuel,6-Speed A/T,Black,Black,At least 1 accident or damage reported,Yes,41075.704277849785,2026-01-29 14:51:54,,
+>>>>>>> Stashed changes:ProyectoVIIRegression-main/production_logs.csv
